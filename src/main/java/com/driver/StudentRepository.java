@@ -77,7 +77,7 @@ public class StudentRepository {
             List<String> studentList = hmTeacherStudentList.get(teachName);
             for(String studentName : studentList){
                 hmStudentTeacherPair.remove(studentName);
-                hmStudent.remove(studentName);
+               // hmStudent.remove(studentName);
             }
             hmTeacherStudentList.remove(teachName);
         }
