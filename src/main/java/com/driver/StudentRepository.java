@@ -21,7 +21,6 @@ public class StudentRepository {
         hmTeacherStudentList = new HashMap<>();
     }
     public void add_student(Student Student){
-
         hmStudent.put(Student.getName(),Student);
     }
     public void add_teacher(Teacher teacher){
@@ -30,10 +29,10 @@ public class StudentRepository {
     }
 
     public void add_student_teacher_pair(String studName,  String teachName){
-        if(!hmStudent.containsKey(studName) && !hmTeacher.containsKey(teachName)){
+        if(!hmStudent.containsKey(studName) || !hmTeacher.containsKey(teachName)){
             return;
         }
-        hmStudentTeacherPair.put(studName,teachName);
+        hmStudentTeacherPair.put(teachName,studName);
         int noOfStudents = hmTeacher.get(teachName).getNumberOfStudents();
         hmTeacher.get(teachName).setNumberOfStudents(noOfStudents+1);
         List<String> list = new ArrayList<>();
@@ -52,8 +51,8 @@ public class StudentRepository {
         return hmTeacher.get(name);
     }
 
-    public List<String> get_students_by_teacher_name(String name){
-        List<String > studentList = hmTeacherStudentList.get(name);
+    public List<String> get_students_by_teacher_name(String teacherName){
+        List<String > studentList = hmTeacherStudentList.get(teacherName);
         return studentList;
     }
 
